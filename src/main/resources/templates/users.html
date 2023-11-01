@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Management</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: rgba(255, 255, 240, 0.89);
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        button {
+            padding: 5px;
+            background-color: rgba(255, 213, 0, 0.71);
+        }
+
+        th {
+            padding: 8px;
+            text-align: left;
+            font-family: "Candara", sans-serif; /* Измените шрифт на Candara */
+        }
+
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .actions {
+            margin-right: 20px;
+            word-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Таблица пользователей</h1>
+<button onclick="window.location.href = '/add';">Добавить нового пользователя</button>
+<br>
+<br>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">ID</td>
+        <td th:text="${user.firstname}">First Name</td>
+        <td th:text="${user.lastname}">Last Name</td>
+        <td th:text="${user.age}">Age</td>
+        <td class="actions">
+            <a th:href="@{'/edit?id=' + ${user.id}}">Edit</a>
+            <a th:href="@{'/delete?id=' + ${user.id}}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
