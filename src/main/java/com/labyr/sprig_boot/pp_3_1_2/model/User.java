@@ -6,21 +6,17 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "users")
+@Table
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @Column
     private String firstname;
 
-    @Column
     private String lastname;
 
-    @Column
     private byte age;
 
     public User() {
